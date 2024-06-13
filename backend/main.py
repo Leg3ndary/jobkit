@@ -5,14 +5,9 @@ Provides a flask API for the project to interact with gpt4free
 """
 
 import flask
-from g4f.client import Client
-from g4f.Provider import ChatgptAi
-from g4f.cookies import set_cookies
+import g4f
 
 app = flask.Flask(__name__)
-
-client = Client(provider=ChatgptAi)
-
 
 @app.route("/api/generate", methods=["GET"])
 def generate():
@@ -21,9 +16,12 @@ def generate():
     # prompt = data["prompt"]
     prompt = "What is the meaning of life?"
     messages = ([{"role": "user", "content": prompt}],)
-    response = client.chat.completions.create(model="gpt-4", messages=messages)
-    print(response.choices[0].message.content)
-    return flask.jsonify(response.choices[0].message.content or "")
+    response = g4f.ChatCompletion.create(
+        model=g4f.models.gpt_4o,
+        messages=messages,
+        provider=g4f.Provider.,
+    )
+    return flask.jsonify({"response": response})
 
 
 if __name__ == "__main__":
