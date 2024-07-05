@@ -8,5 +8,5 @@ Literally anything you could ever need for your job search.
 $ git clone https://github.com/Leg3ndary/jobkit.git
 $ cd jobkit
 $ npm install
-$ npm run dev -- --open
+$ npm run dev
 ```
