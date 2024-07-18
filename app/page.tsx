@@ -1,3 +1,14 @@
+// metadata
+
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Jobkit",
+    description: "Everything you need to find your next job.",
+    keywords: ["job", "board", "developer", "remote"],
+
+};
+
 export default function Home() {
     return (
         <main className="flex flex-col items-center justify-center min-h-screen">
